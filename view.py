@@ -38,16 +38,16 @@ class GameView(object):
 
 
         #### Create our player markers.
+        self.players = []
         marker_scale = board_size / 100 / grid_size
         marker_lineweight = 8 * marker_scale
         self.create_player_shapes()
-        x_marker = GameView.new_turtle('x marker',
-                                              marker_scale,
-                                              marker_lineweight)
-        o_marker = GameView.new_turtle('o marker',
-                                              marker_scale,
-                                              marker_lineweight)
-        self.players = [x_marker, o_marker]
+        self.players.append(GameView.new_turtle('x marker',
+                                                marker_scale,
+                                                marker_lineweight))
+        self.players.append(GameView.new_turtle('o marker',
+                                                marker_scale,
+                                                marker_lineweight))
 
         #### Final initialization
         self.draw_board()

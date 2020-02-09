@@ -8,8 +8,10 @@ class GameController(object):
         self.model = model
 
     def make_play(self, space: List[int]) -> int:
-        played = self.model.check_space(space)
-        if played:
+        if not self.model.is_space_empty(space):
             return 0
-        return self.model.get_current_player()
+        current_player = self.model.get_active_player()
+        self.model.make_play(space)
+        self.model.advance_player_order()
+        return current_player
 
